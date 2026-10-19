@@ -1,0 +1,12 @@
+{
+  "_comment": "Вопросы опроса. type: text | tel | number | textarea | radio | checkbox | select. required: true/false. Id — латиницей, без пробелов. Это ВРЕМЕННЫЕ вопросы — замените на ваши.",
+  "questions": [
+    { "id": "name",     "type": "text",     "label": "Как вас зовут?", "required": true, "max": 100 },
+    { "id": "attend",   "type": "radio",    "label": "Сможете ли вы прийти?", "required": true,
+      "options": ["Да, с радостью", "К сожалению, нет", "Пока не знаю"] },
+    { "id": "guests",   "type": "number",   "label": "Сколько человек будет с вами (включая вас)?", "min": 1, "max": 10 },
+    { "id": "food",     "type": "checkbox", "label": "Пожелания по меню",
+      "options": ["Мясо", "Рыба", "Вегетарианское", "Есть аллергия"] },
+    { "id": "wishes",   "type": "textarea", "label": "Ваши пожелания к празднику", "max": 1000 }
+  ]
+}

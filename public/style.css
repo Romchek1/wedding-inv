@@ -1,0 +1,80 @@
+/* Шрифты. Файлы Ekaterina Velikaya One и Felidae (из макета) положите в fonts/ —
+   они подхватятся автоматически, см. README. Пока подставлены близкие аналоги. */
+@font-face{font-family:"EVO";src:local("Ekaterina Velikaya One"),url(fonts/EkaterinaVelikayaOne.woff2) format("woff2"),url(fonts/EkaterinaVelikayaOne.ttf) format("truetype");font-display:swap}
+@font-face{font-family:"Felidae";src:local("Felidae"),url(fonts/Felidae.woff2) format("woff2"),url(fonts/Felidae.ttf) format("truetype");font-display:swap}
+@font-face{font-family:"Marck Script";src:url(fonts/MarckScript-cyrillic.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap}
+@font-face{font-family:"Marck Script";src:url(fonts/MarckScript-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122;font-display:swap}
+@font-face{font-family:"Cormorant Garamond";font-weight:300 500;src:url(fonts/CormorantGaramond-cyrillic.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:swap}
+@font-face{font-family:"Cormorant Garamond";font-weight:300 500;src:url(fonts/CormorantGaramond-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122;font-display:swap}
+
+:root{--bg:#F0EFEB;--ink:#000;--ghost:#E7E6E3;--grey:#CFCFCF}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink)}
+body{overflow-x:hidden;-webkit-text-size-adjust:100%}
+
+/* Макет рисуется в ширину 440px и масштабируется под экран (app.js) */
+#viewport{width:100%;overflow:hidden}
+#stage{width:440px;position:relative;transform-origin:0 0;background:var(--bg)}
+
+.script{font-family:"EVO","Marck Script",cursive;font-weight:400;line-height:1.1}
+.sans{font-family:"Felidae","Cormorant Garamond",serif;font-weight:400;line-height:1.25}
+.c{text-align:center}
+h2,h3,p{margin:0;font-weight:400}
+
+.frame{position:relative;height:2770px;overflow:hidden}
+.abs{position:absolute;white-space:nowrap}
+.abs.wrap{white-space:normal}
+.bg-letter{position:absolute;color:var(--ghost);white-space:nowrap;pointer-events:none;user-select:none}
+.title{font-size:125px;line-height:1}
+.amp{font-size:70px;opacity:.7}
+
+.mirror{left:86px;top:613px;width:268px;height:367px}
+.mirror img{position:absolute;inset:0;width:100%;height:100%}
+/* Фото внутри зеркала: положите public/assets/mirror-photo.jpg */
+.mirror-photo{position:absolute;left:62px;top:84px;width:144px;height:196px;border-radius:50%;
+  background:#1a1a1a url(assets/mirror-photo.jpg) center/cover;filter:grayscale(1)}
+
+.story{left:0;width:440px;top:1184px;white-space:normal;display:flex;flex-direction:column;gap:32px;font-size:15px}
+.photos{left:40px;top:1773px;display:flex;gap:30px;height:100px}
+.photos img{display:block;filter:grayscale(1)}
+.date{font-size:90px;line-height:1}
+
+/* ---------- Опрос ---------- */
+.survey{position:relative;padding:0 36px 64px}
+.survey>h2{font-size:40px;margin-bottom:28px}
+.q{margin-bottom:26px}
+.q>label:not(.opt),.q>legend{display:block;padding:0;font:400 19px/1.25 "Felidae","Cormorant Garamond",serif;margin-bottom:10px}
+.q .req{opacity:.5}
+.q input[type=text],.q input[type=tel],.q input[type=number],.q textarea,.q select{
+  width:100%;background:transparent;border:0;border-bottom:1px solid #000;border-radius:0;
+  padding:8px 2px;font:400 17px/1.3 "Felidae","Cormorant Garamond",serif;color:#000;outline:0}
+.q textarea{border:1px solid #000;padding:10px;min-height:96px;resize:vertical}
+.q input:focus,.q textarea:focus,.q select:focus{border-color:#000;box-shadow:0 1px 0 #000}
+fieldset.q{border:0;padding:0;margin:0 0 26px;min-width:0}
+.opt{display:flex;align-items:center;gap:12px;padding:6px 0;cursor:pointer;font:400 17px/1.3 "Felidae","Cormorant Garamond",serif}
+.opt input{appearance:none;-webkit-appearance:none;flex:none;width:20px;height:20px;border:1px solid #000;margin:0;background:transparent;display:grid;place-content:center}
+.opt input[type=radio]{border-radius:50%}
+.opt input::before{content:"";width:10px;height:10px;background:#000;transform:scale(0);transition:transform .12s}
+.opt input[type=radio]::before{border-radius:50%}
+.opt input:checked::before{transform:scale(1)}
+.opt input:focus-visible,.btn:focus-visible{outline:2px solid #000;outline-offset:3px}
+.q.err>label:not(.opt),.q.err>legend{color:#a33}
+.q.err input[type=text],.q.err input[type=tel],.q.err input[type=number],.q.err select{border-bottom-color:#a33}
+.q.err textarea{border-color:#a33}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.btn{display:block;width:100%;margin-top:8px;padding:14px;background:#000;color:var(--bg);border:0;
+  font:400 20px "Felidae","Cormorant Garamond",serif;letter-spacing:.04em;cursor:pointer}
+.btn[disabled]{opacity:.5;cursor:default}
+.msg{min-height:22px;margin-top:12px;text-align:center;font:400 16px "Felidae","Cormorant Garamond",serif;color:#a33}
+.thanks h3{font-size:40px;margin-bottom:12px}
+.thanks p{font-size:19px}
+
+/* ---------- Подвал ---------- */
+.foot{background:var(--grey);height:186px;position:relative;font-size:14px;line-height:1.25;padding:59px 21px 0;display:flex;justify-content:space-between}
+.foot p{margin:0 0 14px}
+.foot a{color:inherit;text-decoration:none}
+.foot-col.r{text-align:right}
+.logo{position:absolute;left:50%;top:114px;transform:translateX(-50%);display:grid;grid-template-columns:repeat(3,auto);justify-content:center;align-items:end;column-gap:1px}
+.logo i{display:block;background:#000}
+.logo span{grid-column:1/-1;text-align:center}
+.logo span{font:400 12px/10px "Helios Compressed","Cormorant Garamond",sans-serif;letter-spacing:.24px;white-space:nowrap;margin-top:2px}
