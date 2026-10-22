@@ -7,6 +7,8 @@ const path = require('path');
 const PORT = +process.env.PORT || 3000;
 const HOST = process.env.HOST || '127.0.0.1';
 const ADMIN_TOKEN = process.env.ADMIN_TOKEN || '';
+const TG_TOKEN = process.env.TELEGRAM_BOT_TOKEN || '';
+const TG_CHAT = process.env.TELEGRAM_CHAT_ID || '';
 const PUBLIC = path.join(__dirname, 'public');
 const DATA_DIR = process.env.DATA_DIR || path.join(__dirname, 'data');
 const FILE = path.join(DATA_DIR, 'responses.jsonl');
@@ -56,6 +58,26 @@ function validate(answers) {
   return { out };
 }
 
+// Уведомление в Telegram. Ответ уже сохранен в файл, поэтому сбой Telegram гостю не показываем.
+async function notifyTelegram(answers) {
+  if (!TG_TOKEN || !TG_CHAT) return;
+  const lines = loadQuestions().map(q => {
+    const v = answers[q.id], text = Array.isArray(v) ? v.join(', ') : v;
+    return `${q.label}\n→ ${text || '—'}`;
+  });
+  const text = ('Новый ответ на опрос\n\n' + lines.join('\n\n')).slice(0, 4000);
+  for (let i = 0; i < 3; i++) {
+    try {
+      const r = await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_id: TG_CHAT, text }), signal: AbortSignal.timeout(10000) });
+      if (r.ok) return;
+      console.error('telegram', r.status, await r.text());
+    } catch (e) { console.error('telegram', e.message); }
+    await new Promise(res => setTimeout(res, 2000 * (i + 1)));
+  }
+}
+
 function readBody(req, limit = 20000) {
   return new Promise((resolve, reject) => {
     let size = 0; const chunks = [];
@@ -84,6 +106,7 @@ const server = http.createServer(async (req, res) => {
       const { out, error } = validate(body.answers);
       if (error) return send(res, 400, { error });
       fs.appendFileSync(FILE, JSON.stringify({ at: new Date().toISOString(), ...out }) + '\n');
+      notifyTelegram(out).catch(e => console.error('telegram', e.message));
       return send(res, 200, { ok: true });
     } catch (e) { return send(res, 400, { error: 'Некорректный запрос' }); }
   }

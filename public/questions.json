@@ -1,12 +1,18 @@
 {
-  "_comment": "Вопросы опроса. type: text | tel | number | textarea | radio | checkbox | select. required: true/false. Id — латиницей, без пробелов. Это ВРЕМЕННЫЕ вопросы — замените на ваши.",
+  "_comment": "Вопросы опроса. type: text | tel | number | textarea | radio | checkbox | select. required: true/false. id — латиницей, без пробелов.",
   "questions": [
-    { "id": "name",     "type": "text",     "label": "Как вас зовут?", "required": true, "max": 100 },
-    { "id": "attend",   "type": "radio",    "label": "Сможете ли вы прийти?", "required": true,
-      "options": ["Да, с радостью", "К сожалению, нет", "Пока не знаю"] },
-    { "id": "guests",   "type": "number",   "label": "Сколько человек будет с вами (включая вас)?", "min": 1, "max": 10 },
-    { "id": "food",     "type": "checkbox", "label": "Пожелания по меню",
-      "options": ["Мясо", "Рыба", "Вегетарианское", "Есть аллергия"] },
-    { "id": "wishes",   "type": "textarea", "label": "Ваши пожелания к празднику", "max": 1000 }
+    { "id": "size", "type": "radio", "required": true,
+      "label": "Хотели бы вы большую свадьбу или в близком кругу семьи?",
+      "options": ["Большую свадьбу", "В близком кругу семьи"] },
+    { "id": "style", "type": "textarea", "max": 1000,
+      "label": "Какой стиль свадьбы вы рассматриваете?" },
+    { "id": "date", "type": "radio", "required": true,
+      "label": "Вам удобнее воскресенье 31 октября или понедельник 1 ноября?",
+      "options": ["Воскресенье, 31 октября", "Понедельник, 1 ноября"] },
+    { "id": "trust", "type": "radio", "required": true,
+      "label": "Доверитесь ли вы нам в плане меню и организации?",
+      "options": ["Да, полностью доверяем", "Частично, хотим обсудить детали", "Нет, хотим решить сами"] },
+    { "id": "dream", "type": "textarea", "max": 1000,
+      "label": "Мы хотим сделать этот день незабываемым в вашей совместной жизни и воплотить вашу мечту в реальность. Есть ли у вас свадебная мечта?" }
   ]
 }

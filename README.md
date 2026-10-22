@@ -23,3 +23,8 @@
     # 2. с компьютера, при каждом обновлении:
     bash deploy/deploy.sh root@IP
     # 3. (по желанию) https:  ssh root@IP bash -s 147-45-43-34.sslip.io < deploy/https.sh
+
+## Ответы в Telegram
+1. В Telegram откройте @BotFather → `/newbot` → получите токен. Напишите своему боту любое сообщение (или добавьте его в группу и напишите там).
+2. На сервере: `bash /opt/wedding-invite/../set-telegram.sh` — либо скопируйте `deploy/set-telegram.sh` на сервер и запустите; скрипт спросит токен, сам найдет чат и перезапустит сайт.
+Ответы по-прежнему сохраняются в `data/responses.jsonl` (резервная копия).
