@@ -21,7 +21,7 @@ body{overflow-x:hidden;-webkit-text-size-adjust:100%}
 .c{text-align:center}
 h2,h3,p{margin:0;font-weight:400}
 
-.frame{position:relative;height:2770px;overflow:hidden}
+.frame{position:relative;height:2890px;overflow:hidden}
 .abs{position:absolute;white-space:nowrap}
 .abs.wrap{white-space:normal}
 .bg-letter{position:absolute;color:var(--ghost);white-space:nowrap;pointer-events:none;user-select:none}
@@ -34,14 +34,14 @@ h2,h3,p{margin:0;font-weight:400}
 .mirror-photo{position:absolute;left:62px;top:84px;width:144px;height:196px;border-radius:50%;
   background:#1a1a1a url(assets/mirror-photo.jpg) center/cover;filter:grayscale(1)}
 
-.story{left:0;width:440px;top:1184px;white-space:normal;display:flex;flex-direction:column;gap:32px;font-size:15px}
-.photos{left:40px;top:1773px;display:flex;gap:30px;height:100px}
+.story{left:0;width:440px;top:1210px;white-space:normal;display:flex;flex-direction:column;gap:32px;font-size:15px}
+.photos{left:40px;top:1795px;display:flex;gap:30px;height:100px}
 .photos img{display:block;filter:grayscale(1)}
 .date{font-size:90px;line-height:1}
 
 /* ---------- Опрос ---------- */
 .survey{position:relative;padding:0 36px 64px}
-.survey>h2{font-size:40px;margin-bottom:28px}
+.survey>h2{font-size:40px;margin-bottom:28px;padding-top:24px}
 .q{margin-bottom:26px}
 .q>label:not(.opt),.q>legend{display:block;padding:0;font:400 19px/1.25 "Felidae","Cormorant Garamond",serif;margin-bottom:10px}
 .q .req{opacity:.5}
