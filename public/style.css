@@ -30,10 +30,9 @@ h2,h3,p{margin:0;font-weight:400}
 .amp{font-size:70px;opacity:.7}
 
 .mirror{left:86px;top:613px;width:268px;height:367px}
-.mirror img{position:absolute;inset:0;width:100%;height:100%}
+.mirror>img:not(.mirror-photo){position:absolute;inset:0;width:100%;height:100%}
 /* Фото внутри зеркала: положите public/assets/mirror-photo.jpg */
-.mirror-photo{position:absolute;left:62px;top:84px;width:144px;height:196px;border-radius:50%;
-  background:url(assets/mirror-photo.jpg) center/cover,radial-gradient(ellipse at 35% 25%,#f4f4f2 0%,#c9c9c6 45%,#8f8f8c 100%);filter:grayscale(1)}
+.mirror-photo{position:absolute;left:62px;top:84px;width:144px;height:196px;object-fit:fill}
 
 .story{left:0;width:440px;top:1210px;white-space:normal;display:flex;flex-direction:column;gap:32px;font-size:15px}
 .photos{left:40px;top:1795px;display:flex;gap:30px;height:100px}
@@ -67,7 +66,8 @@ fieldset.q{border:0;padding:0;margin:0 0 26px;min-width:0}
   font:400 20px "Felidae","Cormorant Garamond",serif;letter-spacing:.04em;cursor:pointer}
 .btn[disabled]{opacity:.5;cursor:default}
 .msg{min-height:22px;margin-top:12px;text-align:center;font:400 16px "Felidae","Cormorant Garamond",serif;color:#a33}
-.thanks h3{font-size:40px;margin-bottom:12px}
+.thanks{padding:40px 0 20px}
+.thanks h3{font-size:44px;line-height:1.3;margin-bottom:56px}
 .thanks p{font-size:19px}
 
 /* ---------- Подвал ---------- */
@@ -75,7 +75,4 @@ fieldset.q{border:0;padding:0;margin:0 0 26px;min-width:0}
 .foot p{margin:0 0 14px}
 .foot a{color:inherit;text-decoration:none}
 .foot-col.r{text-align:right}
-.logo{position:absolute;left:50%;top:114px;transform:translateX(-50%);display:grid;grid-template-columns:repeat(3,auto);justify-content:center;align-items:end;column-gap:1px}
-.logo i{display:block;background:#000}
-.logo span{grid-column:1/-1;text-align:center}
-.logo span{font:400 12px/10px "Helios Compressed","Cormorant Garamond",sans-serif;letter-spacing:.24px;white-space:nowrap;margin-top:2px}
+.logo{position:absolute;left:50%;top:112px;transform:translateX(-50%);width:66px;height:53px}
