@@ -21,18 +21,19 @@ body{overflow-x:hidden;-webkit-text-size-adjust:100%}
 .c{text-align:center}
 h2,h3,p{margin:0;font-weight:400}
 
-.frame{position:relative;height:2890px;overflow:hidden}
+.frame{position:relative;height:2930px;overflow:hidden}
 .abs{position:absolute;white-space:nowrap}
 .abs.wrap{white-space:normal}
 .bg-letter{position:absolute;color:var(--ghost);white-space:nowrap;pointer-events:none;user-select:none}
 .title{font-size:125px;line-height:1}
+.pavel{font-size:86px}
 .amp{font-size:70px;opacity:.7}
 
 .mirror{left:86px;top:613px;width:268px;height:367px}
 .mirror img{position:absolute;inset:0;width:100%;height:100%}
 /* Фото внутри зеркала: положите public/assets/mirror-photo.jpg */
 .mirror-photo{position:absolute;left:62px;top:84px;width:144px;height:196px;border-radius:50%;
-  background:#1a1a1a url(assets/mirror-photo.jpg) center/cover;filter:grayscale(1)}
+  background:url(assets/mirror-photo.jpg) center/cover,radial-gradient(ellipse at 35% 25%,#f4f4f2 0%,#c9c9c6 45%,#8f8f8c 100%);filter:grayscale(1)}
 
 .story{left:0;width:440px;top:1210px;white-space:normal;display:flex;flex-direction:column;gap:32px;font-size:15px}
 .photos{left:40px;top:1795px;display:flex;gap:30px;height:100px}
@@ -41,7 +42,7 @@ h2,h3,p{margin:0;font-weight:400}
 
 /* ---------- Опрос ---------- */
 .survey{position:relative;padding:0 36px 64px}
-.survey>h2{font-size:40px;margin-bottom:28px;padding-top:24px}
+.survey>h2{font-size:40px;margin-bottom:110px;padding-top:50px}
 .q{margin-bottom:26px}
 .q>label:not(.opt),.q>legend{display:block;padding:0;font:400 19px/1.25 "Felidae","Cormorant Garamond",serif;margin-bottom:10px}
 .q .req{opacity:.5}
